@@ -17,27 +17,22 @@ public class DialogoInicial extends JDialog {
 	
 	private String nomEmpresa;
 	
+	
 	public DialogoInicial(String name) {
 		setTitle("Bienvenido");
-		pnlDialogoCentral   = new JPanel();
-		pnlDialogoSur       = new JPanel();
-		pnlDialogoLblNombre = new JPanel();
-		pnlDialogotxtNombre = new JPanel();
+		pnlDialogoCentral      = new JPanel();
+		pnlDialogoSur          = new JPanel();
+		pnlDialogoLblNombre    = new JPanel();
+		pnlDialogotxtNombre    = new JPanel();
 		pnlDialogoBtnContinuar = new JPanel();
-		nombreEmpresa       = new JLabel("Nombre para empresa");
-		txtNombreEmpresa    = new JTextField();
+		nombreEmpresa          = new JLabel("Nombre para empresa");
+		txtNombreEmpresa       = new JTextField();
 
 		txtNombreEmpresa.addKeyListener(new KeyAdapter(){ 
 			public void keyReleased (KeyEvent e) {
 				btnDialogoContinuar.setEnabled(txtNombreEmpresa.getText().length() != 0 );
 				
 			}
-			
-//			public void keyPressed(KeyEvent e) {
-//				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-//					btnDialogoContinuar.setFocusable(true);
-//				}
-//			}
 		});
 		txtNombreEmpresa.addKeyListener(new KeyListener(this));
 		txtNombreEmpresa.setColumns(10);
@@ -47,7 +42,7 @@ public class DialogoInicial extends JDialog {
 		btnDialogoContinuar.setEnabled(false);
 		btnDialogoContinuar.addActionListener(new ListenerDialogo(this));
 		
-		setVisible(true);
+//		setVisible(true);
 		
 		setLayout(new BorderLayout());
 		

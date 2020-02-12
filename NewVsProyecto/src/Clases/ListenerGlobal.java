@@ -21,13 +21,13 @@ private FrameGlobal miFrameGlobal;
         
         if(e.getSource()  == miFrameGlobal.getEmpleado()){
         	
-//            Frame miFrame = new Frame();
-//        	miFrame.setVisible(true);
+            Frame miFrame = new Frame();
+        	miFrame.setVisible(true);
 
         	FrameGlobal.Funcionalidad();
         	
         	
-            //new Dialog(miFrame).setVisible(true);
+//            new Dialog(miFrame).setVisible(true);
            
             return;
            

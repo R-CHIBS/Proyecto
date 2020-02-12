@@ -39,13 +39,14 @@ public class Dialog extends JDialog {
 	private JTextField txt4;
 	private JCheckBox chek;
 
-	private JButton btn1;
+	private JButton btnGuardar;
 	private JButton btn2;
 
 	public Dialog(Frame miFrame, int numero) {
 
 		this.miFrame = miFrame;
 		setSize(400, 500);
+		setLocation(1115,150);
 		if (numero == 1) {
 			componentesCrearEmpleado();
 
@@ -138,8 +139,8 @@ public class Dialog extends JDialog {
 		this.chek = chek;
 	}
 
-	public void setBtn1(JButton btn1) {
-		this.btn1 = btn1;
+	public void setbtnGuardar(JButton btnGuardar) {
+		this.btnGuardar = btnGuardar;
 	}
 
 	public void setBtn2(JButton btn2) {
@@ -214,8 +215,8 @@ public class Dialog extends JDialog {
 		return chek;
 	}
 
-	public JButton getBtn1() {
-		return btn1;
+	public JButton getbtnGuardar() {
+		return btnGuardar;
 	}
 
 	public JButton getBtn2() {
@@ -233,7 +234,7 @@ public class Dialog extends JDialog {
 	private void componentes() {
 		panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(5, 1));
-		setLocationRelativeTo(null);
+//		setLocationRelativeTo(null);
 
 		panel2 = new JPanel();
 		panel3 = new JPanel();
@@ -259,7 +260,7 @@ public class Dialog extends JDialog {
 
 //                chek = new JCheckBox();
 
-		btn1 = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		btn2 = new JButton("Cancelar");
 
 		panel1.add(panel2);
@@ -268,7 +269,7 @@ public class Dialog extends JDialog {
 		panel1.add(panel5);
 		panel1.add(panel6);
 
-		panel7.add(btn1);
+		panel7.add(btnGuardar);
 		panel7.add(btn2);
 
 		panel2.add(etq1);
@@ -286,7 +287,7 @@ public class Dialog extends JDialog {
 //                panel6.add(etq5);
 //                panel6.add(chek);
 
-		btn1.addActionListener(new MyListener(this));
+		btnGuardar.addActionListener(new MyListener(this));
 		btn2.addActionListener(new MyListener(this));
 
 		getContentPane().add(panel7, BorderLayout.SOUTH);

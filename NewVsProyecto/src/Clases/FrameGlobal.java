@@ -1,7 +1,9 @@
 package Clases;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -27,20 +29,22 @@ public class FrameGlobal extends JFrame {
 	private static JDesktopPane escritorio;
 	private DialogoInicial dialogoInicial;
 	
+	private JPanel pnlFondo;
 	
-	@SuppressWarnings("serial")
+	
+//	@SuppressWarnings("serial")
 	public FrameGlobal() {
 		//DIALOGO PARA INICIO DE EMPRESA
-		dialogoInicial = new DialogoInicial("Bienvenido");
-		
+//		dialogoInicial = new DialogoInicial("Bienvenido");
+//		dialogoInicial.setVisible(true);
 		
 		
 		//INICIO DE FRAME PRINCIPAL
 		setVisible(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(900, 700);
+		setSize(650, 700);
 		
-//		setTitle(nomEmpresa);
+//		setTitle(dialogoInicial.getTxtNombreEmpresa().getText());
 		
 
 		barraMenu = new JMenuBar();
@@ -49,9 +53,19 @@ public class FrameGlobal extends JFrame {
 		empleado = new JMenuItem("Empleado");
 		salir = new JMenuItem("Salir");
 
-		escritorio = new JDesktopPane();
+		escritorio = new JDesktopPane(){
+		    @Override
+		    protected void paintComponent(Graphics g) {
+		        super.paintComponent(g);
+		        g.setColor(Color.BLACK);
+		        g.fillRect(0, 0, getWidth(), getHeight());
+		    }
+		};
+		
 		setContentPane(escritorio);
-
+		
+		
+		
 		barraMenu.add(archivo);
 		archivo.add(empleado);
 		archivo.add(salir);
@@ -60,6 +74,18 @@ public class FrameGlobal extends JFrame {
 		salir.addActionListener(new ListenerGlobal(this));
 		
 		setLocationRelativeTo(null);
+	}
+	
+	public static void Funcionalidad() {
+		// TODO Auto-generated method stub
+		Frame miFrame = new Frame();
+		escritorio.add(miFrame);
+		Dimension tamEscritorio = escritorio.getSize();
+		Dimension tamFrame = miFrame.getSize();
+		miFrame.setLocation((tamEscritorio.width - tamFrame.width)/2, (tamEscritorio.height - tamFrame.height)/2);
+
+		miFrame.show();
+
 	}
 
 	public JMenuBar getBarraMenu() {
@@ -98,60 +124,6 @@ public class FrameGlobal extends JFrame {
 		return escritorio;
 	}
 
-//	public JDialog getDialogoPrincipal() {
-//		return dialogoPrincipal;
-//	}
-//
-//	public JLabel getNombreEmpresa() {
-//		return nombreEmpresa;
-//	}
-//
-//	public JPanel getPnlDialogoCentral() {
-//		return pnlDialogoCentral;
-//	}
-//
-//	public JPanel getPnlDialogoSur() {
-//		return pnlDialogoSur;
-//	}
-//
-//	public JPanel getPnlDialogoLblNombre() {
-//		return pnlDialogoLblNombre;
-//	}
-//
-//	public JPanel getPnlDialogotxtNombre() {
-//		return pnlDialogotxtNombre;
-//	}
-//
-//	public JPanel getPnlDialogoBtnContinuar() {
-//		return pnlDialogoBtnContinuar;
-//	}
-//
-//	public JTextField getTxtNombreEmpresa() {
-//		return txtNombreEmpresa;
-//	}
-//
-//	public JButton getBtnDialogoContinuar() {
-//		return btnDialogoContinuar;
-//	}
-//
-//	public String getNomEmpresa() {
-//		return nomEmpresa;
-//	}
-//	
-//	public void setNomEmpresa(String nom) {
-//		this.nomEmpresa = nom;
-//	}
-
-	public static void Funcionalidad() {
-		// TODO Auto-generated method stub
-		Frame miFrame = new Frame();
-		escritorio.add(miFrame);
-		Dimension tamEscritorio = escritorio.getSize();
-		Dimension tamFrame = miFrame.getSize();
-		miFrame.setLocation((tamEscritorio.width - tamFrame.width)/2, (tamEscritorio.height - tamFrame.height)/2);
-
-		miFrame.show();
-
-	}
+	
 
 }
